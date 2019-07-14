@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+
+    p{
+        margin-top: 1rem;
+    }
+    
+    p .destaq{
+        background: yellow
+    }
+    
+    </style>
+
+    
+</head>
+<body>
+    
+
+<div class="container">
+
+    <input type="text" class="form-control my-5">
+    
+    <div class="content">
+            <p>
+                    O inesperado teaser de The Legend of Zelda: Breath of the Wild 2 (nome provisório) tornou-se num dos maiores momentos da E3 2019 e existem diversas questões suscitadas por ele.
+                </p>
+            
+                <p>
+                    Como seria de esperar, os fãs ficaram encantados com a surpresa revelada pela Nintendo, que numa E3 marcada pela fuga de informações, conseguiu esconder um dos seus maiores trunfos para a Nintendo Switch.
+                </p> 
+            
+                <p>
+                    O pequeno teaser mostra Link ao lado de uma Princesa Zelda de cabelo curto, um furor por si só, numa busca por algo misterioso que aparenta ser o corpo de Ganondorf, preso por uma entidade misteriosa.
+                </p>
+                <p>
+                    Desde logo, este teaser gerou questões em torno da possibilidade de jogar com Zelda, algo que poderia ser apresentado através da implementação de funcionalidades cooperativas.
+                </p>
+                <p>
+                    Em conversa com o IGN, o senhor Eiji Aonuma, produtor da série, foi questionado sobre a possível implementação de um modo cooperativo para jogar com os dois personagens e deixou a esperança em aberto.
+                </p>
+                <p>
+                    "É interessante falares nisso, pois em Breath of the Wild também vês frequentemente Zelda e Link juntos, por isso, ir directamente para o pensamento de cooperativo é muito interessante para mim."
+                </p>
+                <p>
+                    O senhor Aonuma não confirma a presença do cooperativo em Zelda: Breath of the Wild 2, mas tal como a possibilidade de jogar com Zelda, deixa a ideia em aberto e mantém viva a esperança.
+                </p>
+    </div>
+</div>
+   <script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+
+    <script>
+        
+        let $p = $('p');
+        let filtrado;
+        $(':input').on('keyup', filtrar)
+        
+        function filtrar(e){
+            let val = $(this).val();
+            if(val.length >= 3){
+                
+                filtrado = $.grep( $p.clone(), function(el, i){
+                    return $(el).text().indexOf(val) >= 0
+                } )
+       
+                
+                if(filtrado.length){
+                    $('.content').empty().append( $.map( filtrado, (el, i) => {
+                        $(el).html( $(el).text().replace(val, '<span class="destaq"> '+ val +'</span>') )
+                        return $(el)
+                    } ) )
+                } else {
+                    $('.content').empty().append( $('<p>').text('nenhum resultado encontrado').css('text-align', 'center') )
+
+                }
+                
+            } else {
+                $('.content').empty().append($p)
+            }
+        }
+    	
+    </script>
+   
+    
+</body>
+</html>
